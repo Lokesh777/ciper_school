@@ -20,7 +20,7 @@ export default function Authentication() {
     e.preventDefault();
   dispatch({type:"LOGIN_START"})
   try{
-    const response = await axios.post('http://localhost:5000/blogify/auth/login',{
+    const response = await axios.post('http://localhost:5000/api/auth/login',{
         email: formData.email,
         password: formData.password
     });
@@ -48,7 +48,7 @@ console.log(user,isFetching)
     e.preventDefault();
     setError(false)
     try {
-      let res = await axios.post("http://localhost:5000/blogify/auth/register", {
+      let res = await axios.post("http://localhost:5000/api/auth/register", {
         username: formData.username,
         email: formData.email,
         password: formData.password
