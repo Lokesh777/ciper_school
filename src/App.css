@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App{
+  display: flex;
+}
+
+.main-container {
+  display: flex;
+ 
+}
+
+/* Sidebar */
+.sidebar {
+  background: #eaf4fa7c;
+  color: rgb(0, 7, 61);
+  height: 100vh;
+  overflow-y: auto; 
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+
+.logo {
+  font-size: 18px;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.bars {
+  width: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+
+.routes {
+  /* margin-top: 15px; */
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  color: darkslategray;
+  gap: 10px;
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.link:hover {
+  border-right: 4px solid white;
+  background: rgb(255, 183, 2);
+  color: #fff;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.active {
+  border-right: 4px solid white;
+  background: goldenrod;
+  color: #fff;
+}
+
+.link_text {
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.menu {
+  display: flex;
+  color: rgb(0, 7, 61);
+  padding: 5px 10px;
+  border-right: 4px solid transparent;
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  justify-content: space-between;
+}
+
+.menu_item {
+  display: flex;
+  gap: 10px;
+}
+
+.menu_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu_container .link {
+  padding-left: 20px;
+  border-bottom: #fff 0.5px solid;
+}
+
+.icon{
+  font-size: 1.7rem;
+  
+}
+.link{
+  text-decoration: none;
+}
+.pop-up{
+  display: flex;
+ position: fixed;
+top: 10%;
+left: 35%;
+box-shadow:5px 5px 10px #ccc;
+border-radius: 1rem;
+padding: 1rem 1rem 3rem 1rem;
+}
+.pop-up:hover{
+ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+ 
+}
+.pop-up >button{
+  background-color: #fff;
+  border: 0;
+}
