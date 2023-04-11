@@ -54,7 +54,7 @@
 
 .link {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   color: darkslategray;
   gap: 10px;
   padding: 5px 10px;
@@ -71,7 +71,7 @@
 
 .active {
   border-right: 4px solid white;
-  background: goldenrod;
+  background: rgb(255, 103, 9);
   color: #fff;
 }
 
@@ -121,7 +121,7 @@ top: 10%;
 left: 35%;
 box-shadow:5px 5px 10px #ccc;
 border-radius: 1rem;
-padding: 1rem 1rem 3rem 1rem;
+padding: 1rem 1rem 1rem 1rem;
 }
 .pop-up:hover{
  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -131,3 +131,17 @@ padding: 1rem 1rem 3rem 1rem;
   background-color: #fff;
   border: 0;
 }
+
+  /* mobile screen */
+  @media (min-width: 50px) and (max-width: 450px) {
+    /* Styles go here */
+    .pop-up{
+      display: flex;
+      flex-wrap: wrap;
+     position: fixed;
+    top: 10%;
+    left: 20%;
+    padding: .5rem;
+    }
+  }
+  

@@ -16,6 +16,9 @@ import { Fade } from "react-awesome-reveal";
 import "../App.css";
 import Authentication from "../Other/Login";
 import { Context } from "../context/Context";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SideBar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,15 +26,18 @@ const SideBar = ({ children }) => {
   const [showPopUp, setShowPopUp] = useState(false);
   const {user,dispatch} = useContext(Context);
 
-    const handleLogout = ()=>{
-      alert("Logged out successfully...!")
-      dispatch({type:"LOGOUT"})
-    }
-   
+  
   
   const handlePopUp = () => {
-      setShowPopUp(!showPopUp);
-    };
+    setShowPopUp(!showPopUp);
+  };
+  
+  const handleLogout = ()=>{
+    // alert("Logged out successfully...!")
+    toast.success("Logged out successfully...!")
+    dispatch({type:"LOGOUT"})
+    handlePopUp()
+  }
 
     const routes = [
       {
@@ -51,12 +57,6 @@ const SideBar = ({ children }) => {
         
       },
       {
-        path: "/follow",
-        name: "Following",
-        icon: <RiUserFollowFill />
-    
-      },
-      {
         path: "/discord",
         name: "Discord",
         icon: <BsDiscord />,
@@ -66,7 +66,7 @@ const SideBar = ({ children }) => {
         path: "/creator",
         name: "Creator",
         icon: <IoIosCreate />
-       
+        
       },
       {
         path: "/feedback",
@@ -81,8 +81,14 @@ const SideBar = ({ children }) => {
         icon: <ImFlag />
       },
       {
+        path: "/profile",
+        name: "Profile",
+        icon: <RiUserFollowFill />
+    
+      },
+      {
         path: "/login",
-        name:user ? "Logout":"Login",
+        name:user ?  <span onClick={handleLogout} >Logout</span> : <span onClick={handlePopUp} >Login</span> ,
         icon:<>{user?<GoSignOut onClick={handleLogout} />:<GoSignIn onClick={handlePopUp} />}
         </> ,
       },
@@ -136,6 +142,7 @@ const SideBar = ({ children }) => {
                   animate="show"
                   exit="hidden"
                   className="logo"
+                  
                 >
                   {user?user.username:"Dashboard"}
                 </motion.h1>
@@ -157,8 +164,6 @@ const SideBar = ({ children }) => {
               {/* <FaBars onClick={toggle} /> */}
             </div>
           </div>
-
-
 
           <section className="routes">
             {routes.map((route, index) => {
@@ -207,10 +212,11 @@ const SideBar = ({ children }) => {
 
         <main>{children}</main>
       </div>
+      <ToastContainer position="top-center" />
 
       {showPopUp && (
         <div className="pop-up">
-            <Authentication />
+            <Authentication handleAuth={handlePopUp}  />
           <button onClick={handlePopUp}>❌</button>
         </div>
       )}

@@ -2,83 +2,92 @@ import {  useContext, useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import axios from "axios";
 import { Context } from '../context/Context';
-import "./All.css"
+import "./All.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
+import { api_url } from '../API/Api';
+
 
 const initialFormData = {
   username: "",
   email: "",
   password: "",
+  interest:"",
 };
 
-export default function Authentication() {
+export default function Authentication({handleAuth}) {
   const [loginSignup, setLoginSignup] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [error,setError]=useState(false);
-  const { user,dispatch, isFetching } = useContext(Context);
+  const {dispatch, isFetching } = useContext(Context);
+  const navigate = useNavigate()
 
   const loginSubmit = async (e) => {
     e.preventDefault();
+    setError(false)
   dispatch({type:"LOGIN_START"})
   try{
-    const response = await axios.post('http://localhost:5000/api/auth/login',{
-        email: formData.email,
-        password: formData.password
+    const response = await axios.post(`${api_url}auth/login`,{
+      email: formData.email,
+      password: formData.password
     });
-   dispatch({type: "LOGIN_SUCCESS", payload: response.data})
-    alert(response.data.message);
+
+    if(!response){
+      toast.error(response.data.message);
+    }
+    dispatch({type: "LOGIN_SUCCESS", payload: response.data})
+    // alert(response.data.message);    
+    toast.success(response.data.message);
+    navigate("/");
     console.log(response.data);
+    handleAuth()
 
   }catch(err){
-    
+    setError(true);
     dispatch({type:"LOGIN_FAILURE"});
     if (err.response) {
-      alert(err.response.data.message);
+      // alert(err.response.data.message);
+      toast.error(err.response.data.message);
       console.log(err.response.data);
     } else if (err.request) {
       console.log(err.request);
     } else {
-      // Something happened in setting up the request that triggered an Error
+      toast.error(err.message)
       console.log('Error', err.message);
     }
   }
 
   }
-console.log(user,isFetching)
+
   const signupSubmit = async (e) => {
     e.preventDefault();
     setError(false)
     try {
-      let res = await axios.post("http://localhost:5000/api/auth/register", {
+      let res = await axios.post(`${api_url}auth/register`, {
         username: formData.username,
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        interest:formData.interest
       });
-      alert("Your account register successfully!")
-      console.log(res.data);
+      toast.success(res.data.message); 
       setLoginSignup(!loginSignup)
     } catch (err) {
         setError(true);
       console.log(err);
+      toast.error(err.response.data.message)
     }
   }
   
-
-
-
-  // events and functions
+ // events and functions
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
-
-
   
-
-
-
-  return (
-    
+  return (    
     <form onSubmit={loginSignup ? signupSubmit:loginSubmit}>
+      <ToastContainer position="top-center" />
       <Box 
           display="flex" 
           flexDirection={"column"}
@@ -86,7 +95,7 @@ console.log(user,isFetching)
           alignItems="center"
           justifyContent={"center"}
           margin="auto"
-          padding={4}
+          padding={2}
           marginTop={2}
         
         >
@@ -123,6 +132,15 @@ console.log(user,isFetching)
           onChange={handleChange}
           
         />
+         { loginSignup&& <TextField
+        margin="normal"
+        variant="outlined"
+        label="interest"
+        name='interest'
+        value={formData.interest}
+        onChange={handleChange}
+         
+      />}
 
 
         <Button disabled={isFetching}

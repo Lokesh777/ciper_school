@@ -2,3 +2,58 @@
     cursor: not-allowed;
     background-color: rgb(119, 60, 38);
   }
+  /* //home page */
+  .HomeBox{
+    display: flex;
+    flex-direction: column;
+  }
+  .home_head{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(255, 103, 9);
+   color: aliceblue;
+   font-weight: bolder;
+    padding: 1rem;
+}
+.home_details{
+    margin-left: 2rem;
+}
+  .home_container{
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(4,1fr); */
+    gap: 2rem;
+    justify-content: center;
+    padding: 1rem;
+  }
+.home_card{
+  border-radius: 1rem;
+  border: 1px solid gray;
+  padding: 1rem;
+  text-align: center;
+  
+
+}
+.home_card > p{
+ color: gray;
+ font-size: 12px;
+ margin: 5px 0;
+}
+.home_card > button{
+ padding: 5px;
+ background-color: orangered;
+ color: #fff;
+ border-radius: 4px;
+border: 0;
+}
+
+  .home_avtar{
+    width: 10rem;
+  }
+
+  /* mobile screen */
+  @media (min-width: 50px) and (max-width: 500px) {
+    /* Styles go here */
+    
+  }
+  

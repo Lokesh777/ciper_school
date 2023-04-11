@@ -1,0 +1,118 @@
+.profile_container{
+     width: 100%;
+}
+
+.profile_head{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(255, 103, 9);
+   color: aliceblue;
+   font-weight: bolder;
+    padding: 2rem;
+}
+.head_details{
+    margin-left: 2rem;
+}
+/* ****************** */
+.settings {
+    display: flex;
+  }
+  
+  .settingsWrapper {
+    flex: 9;
+    padding: 20px;
+  }
+  
+  .settingsTitle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .settingsTitleUpdate {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: lightcoral;
+  }
+  
+  .settingsTitleDelete {
+    color: red;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .settingsForm {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+  
+  .settingsForm > label {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+ 
+ 
+  
+  .settingsForm > input {
+    color: gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+  }
+  .settingsSubmitButton {
+    align-self: center;
+    width: 150px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(255, 103, 9);
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .settingsSubmitButton:hover {
+    background-color: rgb(1, 114, 114);
+  }
+  
+.pop-up2{
+  display: flex;
+ position: fixed;
+top: 20%;
+left: 35%;
+box-shadow:5px 5px 10px #ccc;
+border-radius: 1rem;
+padding: 1rem 1rem 1rem 1rem;
+overflow: hidden;
+}
+.pop-up2:hover{
+ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.pop-up2 >button{
+  background-color: #fff;
+  border: 0;
+}
+.select-popup{
+  width: 15rem;
+  height: 55vh;
+  font-size: larger;
+  border: 0;
+  scroll-snap-type: none;
+
+}
+.select-popup >option{
+  padding: .8rem;
+}
+.select-popup >option:hover{
+  background-color: orangered;
+  color: #fff;
+}
